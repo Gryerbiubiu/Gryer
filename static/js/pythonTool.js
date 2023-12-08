@@ -243,6 +243,87 @@ function updateCode(language) {
                 '        print(f"{title}.png转化成功！")';
             break;
         case 'Echarts2':
+            codeBlock.textContent = 'def china_map_01(area, variate, is_image=False, title=" ", subtitle=""):\n' +
+                '    # 创建地图对象，并设置初始化选项，包括宽度和高度\n' +
+                '    map_chart = (\n' +
+                '        Map(init_opts=opts.InitOpts(width=\'600px\', height=\'500px\'))\n' +
+                '        .add(\n' +
+                '            # "省份",\n' +
+                '            # data_pair=[list(z) for z in zip(area, variate)],  # 数据对，包括地区和折扣率\n' +
+                '            data_pair=[list(z) if z[0] else [z[0], None] for z in zip(area, variate)],  # 处理缺失值\n' +
+                '            maptype="china",  # 地图类型（中国地图）\n' +
+                '            is_map_symbol_show=False,  # 不显示地图标志\n' +
+                '            label_opts=opts.LabelOpts(\n' +
+                '                is_show=True,  # 显示省份名称\n' +
+                '                font_size=8,  # 修改省份名称的字体大小\n' +
+                '                formatter=JsCode(\n' +
+                '                    \'\'\'function(params) {\n' +
+                '                         if (isNaN(params.value)){\n' +
+                '                             return params.name.slice(0, -8);\n' +
+                '                         }else{return params.name.slice(0, -1);}\n' +
+                '                     }\'\'\'\n' +
+                '                ),\n' +
+                '            ),\n' +
+                '            series_name="这是什么啊",  # 系列名称\n' +
+                '        )\n' +
+                '        .set_global_opts(\n' +
+                '            title_opts=opts.TitleOpts(\n' +
+                '                title=f"{title}",  # 标题\n' +
+                '                # subtitle=f"这是地图下方的文字",\n' +
+                '                subtitle=f"{subtitle}",\n' +
+                '                pos_left="center",\n' +
+                '                pos_top="20",\n' +
+                '                title_textstyle_opts=opts.TextStyleOpts(\n' +
+                '                    font_size=15,\n' +
+                '                    font_family="Arial",\n' +
+                '                    align="right"\n' +
+                '                    # font_family="Microsoft YaHei",\n' +
+                '                ),\n' +
+                '                subtitle_textstyle_opts=opts.TextStyleOpts(\n' +
+                '                    font_size=13,  # 副标题字体大小\n' +
+                '                    font_family="Arial",  # 副标题字体格式\n' +
+                '                    color="bleak",  # 副标题颜色\n' +
+                '                    align="center",  # 水平对齐方式\n' +
+                '                ),\n' +
+                '            ),\n' +
+                '            legend_opts=opts.LegendOpts(is_show=False),\n' +
+                '            tooltip_opts=opts.TooltipOpts(\n' +
+                '                is_show=True,\n' +
+                '                formatter="{b} : {c}",  # 鼠标悬停时的提示信息格式\n' +
+                '            ),\n' +
+                '            visualmap_opts=opts.VisualMapOpts(\n' +
+                '                is_piecewise=True,  # 使用分段颜色\n' +
+                '                dimension=0,  # 数据维度\n' +
+                '                pos_right="40",\n' +
+                '                pos_top="250",\n' +
+                '\n' +
+                '                pieces=[\n' +
+                '                    {\'max\': 2.0, \'min\': 1.75, \'label\': \'1.75-2.0\', \'color\': "#f67e06"},\n' +
+                '                    {\'max\': 1.75, \'min\': 1.5, \'label\': \'1.5-1.75\', \'color\': "#f5ac24"},\n' +
+                '                    {\'max\': 1.5, \'min\': 1.25, \'label\': \'1.25-1.5\', \'color\': "#ecb165"},\n' +
+                '                    {\'max\': 1.25, \'min\': 1.05, \'label\': \'1.05-1.25\', \'color\': "#efe185"},\n' +
+                '                    {\'max\': 1.05, \'min\': 0.95, \'label\': \'0.95-1.05\', \'color\': "#63BE7B"},\n' +
+                '                    {\'max\': 0.95, \'min\': 0.75, \'label\': \'0.75-0.95\', \'color\': "#FBD7DA"},\n' +
+                '                    {\'max\': 0.75, \'min\': 0.5, \'label\': \'0.5-0.75\', \'color\': "#FAB2B5"},\n' +
+                '                    {\'max\': 0.5, \'min\': 0.25, \'label\': \'0.25-0.5\', \'color\': "#F98D90"},\n' +
+                '                    {\'max\': 0.25, \'min\': 0, \'label\': \'0-0.25\', \'color\': "#F8696B"}\n' +
+                '                ]\n' +
+                '            ),\n' +
+                '\n' +
+                '        )\n' +
+                '    )\n' +
+                '    html_folder = f\'html\'\n' +
+                '    os.makedirs(html_folder, exist_ok=True)  # 创建文件夹，如果文件夹已经存在则不报错\n' +
+                '    map_chart.render(f\'{html_folder}/{title}.html\')\n' +
+                '    print(f"{title}.html转化成功！")\n' +
+                '    if is_image:\n' +
+                '        print("正在转化png图片...")\n' +
+                '        image_folder = f\'image\'\n' +
+                '        os.makedirs(image_folder, exist_ok=True)  # 创建文件夹，如果文件夹已经存在则不报错\n' +
+                '        make_snapshot(snapshot, map_chart.render(), f\'{image_folder}/{title}.png\')\n' +
+                '        print(f"{title}.png转化成功！")';
+            break;
+        case 'Echarts3':
             codeBlock.textContent = "def plot_stacked_bar_chart(x_axis, y_axis_list, legend_data, is_image=False, html_name=\"demo\", title=\"\", x_axis_name=\"\",\n" +
                 "                           y_axis_name=\"\"):\n" +
                 "    \"\"\"\n" +
