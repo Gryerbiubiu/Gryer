@@ -1,54 +1,3 @@
-function showContent(language) {
-    // Hide all content divs
-    document.getElementById('pythonContent').style.display = 'none';
-    document.getElementById('httpContent').style.display = 'none';
-    document.getElementById('htmlContent').style.display = 'none';
-
-    // Show the selected content div
-    var contentDiv = document.getElementById(language + 'Content');
-    contentDiv.style.display = 'block';
-
-    // Set the default option for the corresponding select element
-    var selectElement = document.getElementById(language + 'Function');
-    selectElement.selectedIndex = 0;
-
-    // Trigger the updateCode function to show the default code
-    updateCode(language);
-}
-
-function showCategory(category) {
-    // 获取相应的元素
-    var normalCategory = document.getElementById("normalCategory");
-    var dataframeCategory = document.getElementById("dataframeCategory")
-    var visualizationCategory = document.getElementById("visualizationCategory");
-    var echartsCategory = document.getElementById("echartsCategory");
-
-    // 隐藏所有选择框
-    normalCategory.style.display = "none";
-    dataframeCategory.style.display = "none";
-    visualizationCategory.style.display = "none";
-    echartsCategory.style.display = "none";
-
-    // 根据传入的类别显示相应的选择框
-    if (category === "normal") {
-        normalCategory.style.display = "block";
-        updateCode('Normal')
-    } else if (category === "dataframe") {
-        dataframeCategory.style.display = "block";
-        updateCode('Dataframe')
-    } else if (category === "visualization") {
-        visualizationCategory.style.display = "block";
-        updateCode('Visualization')
-    } else if (category === "echarts") {
-        echartsCategory.style.display = "block";
-        updateCode('Echarts')
-    }
-}
-
-// 初始调用一次以确保正确显示
-showCategory('normal');
-
-
 function updateCode(language) {
     var selectedFunction = document.getElementById('function' + language).value;
     var codeBlock = document.getElementById('pythonCode');
@@ -381,6 +330,7 @@ function updateCode(language) {
     Prism.highlightElement(codeBlock);
 }
 
+
 function copyToClipboard(elementId) {
     var copyText = document.getElementById(elementId);
     var range = document.createRange();
@@ -407,46 +357,48 @@ function copyToClipboard(elementId) {
     }
 }
 
-// 获取容器元素
-var pythonContainer = document.getElementById("pythonContainer");
-var aiContainer = document.getElementById("aiContainer");
-var specialContainer = document.getElementById("specialContainer");
-var dataContainer = document.getElementById("dataContainer");
 
-// 异步加载 JSON 文件
-fetch('/static/json/links.json')
-    .then(response => response.json())
-    .then(data => renderJSON(data))
-    .catch(error => console.error('Error loading JSON:', error));
+// 假设您的 JSON 数据存储在变量 jsonData 中
+var jsonData = {
+    "categories": [
+        {
+            "name": "Python",
+            "items": [
+                {"name": "Python帮助文档", "link": "https://www.cnpython.com"},
+                {"name": "pyecharts", "link": "https://pyecharts.org/#/zh-cn/datasets"},
+                {"name": "代码自动生成", "link": "https://curlconverter.com"},
+                {"name": "Anaconda镜像", "link": "https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/"}
+            ]
+        },
+        // ... 其他类别的数据
+    ]
+};
 
-// 创建 HTML 元素并将 JSON 数据填充到页面
-function renderJSON(data) {
+// pythonTool.js
 
-    function createLinkElement(item) {
-        return "<li style='display: inline-block; margin-right: 10px;'><a href='" + item.link + "' target='_blank'>" + item.name + '</a></li>';
-    }
+document.addEventListener('DOMContentLoaded', function () {
 
-    function createCategoryHTML(category) {
-        var html = "<ul>";
+    // 使用Fetch API加载JSON文件
+    fetch('../data/links.json')
+        .then(response => response.json())
+        .then(data => {
+            // 获取包含数据的数组
+            var categoryData = data.categories.find(category => category.name === categoryName).items;
 
-        category.items.forEach(function (item) {
-            html += createLinkElement(item);
-        });
+            // 获取用于显示数据的 ul 元素
+            var list = document.getElementById('pythonList');
 
-        html += "</ul>";
+            // 遍历数据并添加到列表中
+            categoryData.forEach(function (item) {
+                var listItem = document.createElement('li');
+                var link = document.createElement('a');
+                link.textContent = item.name;
+                link.href = item.link;
+                link.target = '_blank'; // 在新窗口中打开链接
 
-        return html;
-    }
-
-    // 填充 Python 容器
-    pythonContainer.innerHTML = createCategoryHTML(data.categories[0]);
-
-    // 填充 AI 容器
-    aiContainer.innerHTML = createCategoryHTML(data.categories[1]);
-
-    // 填充 Special 容器
-    specialContainer.innerHTML = createCategoryHTML(data.categories[2]);
-
-    // 填充 Data 容器
-    dataContainer.innerHTML = createCategoryHTML(data.categories[3]);
-}
+                listItem.appendChild(link);
+                list.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error('Error loading JSON:', error));
+});
