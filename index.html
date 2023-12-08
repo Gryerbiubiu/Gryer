@@ -3,7 +3,8 @@
 <head>
     <!-- Other head content -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>web</title>
     <link rel="stylesheet" type="text/css" href="static/css/index.css">
     <link rel="stylesheet" type="text/css" href="static/css/prism.css">
@@ -22,7 +23,7 @@
     <ul id="menu">
         <li><a href="#" onclick="showContent('python')">Python</a></li>
         <li><a href="#" onclick="showContent('http')">常用网址</a></li>
-        <li><a href="#" onclick="showContent('html')">HTML</a></li>
+        <li><a href="#" onclick="showContent('html')">其他</a></li>
     </ul>
 </nav>
 
@@ -90,17 +91,14 @@
         <h1>-Data</h1>
         <div id="dataContainer" class="grid-container">
         </div>
-        <div id="htmlContent" style="display: none;">
-            <textarea id="htmlCode" rows="6" readonly></textarea>
-            <button onclick="copyToClipboard('htmlCode')">复制</button>
-            <span id="htmlCopyMessage"></span>
-        </div>
+    </div>
+    <div id="htmlContent" style="display: none;">
+        <h1>-待开发</h1>
     </div>
 </section>
 <script src="static/js/prism.js" defer></script>
 <script src="static/js/pythonTool.js" defer></script>
 <script>
-
 </script>
 </body>
 </html>

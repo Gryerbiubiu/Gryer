@@ -79,26 +79,26 @@ button {
     grid-gap: 15px;
 }
 
-.link-item a {
-    text-decoration: none; /* 移除下划线 */
-    color: #1a24e3; /* 设置链接文字颜色为黑色，可以根据需要调整颜色 */
+.grid-container {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* 允许链接在一行上不适应屏幕宽度时自动换行 */
 }
 
-.link-item a:hover {
-    text-decoration: underline; /* 在鼠标悬停时重新显示下划线，如果需要的话 */
+.grid-container li {
+    margin-right: 10px; /* 设置链接之间的间距 */
 }
 
-/* 样式表中添加以下规则 */
-.grid-container .link-item {
-    background-color: #f1f1f1;
-    padding: 8px;
+.grid-container a {
+    text-decoration: none;
+    color: #5b08ee;
+    border: 1px solid #3498db;
+    padding: 5px 10px;
     border-radius: 5px;
-    text-align: center;
-    width: 150px;
-    display: inline-block; /* 将链接显示为内联块，使其在同一行排列 */
-    margin-right: 10px; /* 可以根据需要调整链接之间的间距 */
+    margin-bottom: 10px; /* 设置链接下方的间距 */
+    display: inline-block;
 }
-
 
 #linkContainer a {
     text-decoration: none;
@@ -106,10 +106,6 @@ button {
     font-weight: bold;
 }
 
-
-#linkContainer a:hover {
-    color: #ff9900;
-}
 
 /* 调整导航栏中每个选项之间的间距 */
 nav li {

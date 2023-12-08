@@ -406,34 +406,36 @@ function copyToClipboard(elementId) {
         }, 1500);
     }
 }
-// 获取容器元素
-  var pythonContainer = document.getElementById("pythonContainer");
-  var aiContainer = document.getElementById("aiContainer");
-  var specialContainer = document.getElementById("specialContainer");
-  var dataContainer = document.getElementById("dataContainer");
 
-  // 异步加载 JSON 文件
-  fetch('/static/json/links.json')
+// 获取容器元素
+var pythonContainer = document.getElementById("pythonContainer");
+var aiContainer = document.getElementById("aiContainer");
+var specialContainer = document.getElementById("specialContainer");
+var dataContainer = document.getElementById("dataContainer");
+
+// 异步加载 JSON 文件
+fetch('/static/json/links.json')
     .then(response => response.json())
     .then(data => renderJSON(data))
     .catch(error => console.error('Error loading JSON:', error));
 
-  // 创建 HTML 元素并将 JSON 数据填充到页面
-  function renderJSON(data) {
+// 创建 HTML 元素并将 JSON 数据填充到页面
+function renderJSON(data) {
+
     function createLinkElement(item) {
-      return "<li><a href='" + item.link + "' target='_blank'>" + item.name + "</a></li>";
+        return "<li style='display: inline-block; margin-right: 10px;'><a href='" + item.link + "' target='_blank'>" + item.name + '</a></li>';
     }
 
     function createCategoryHTML(category) {
-      var html = "<ul>";
+        var html = "<ul>";
 
-      category.items.forEach(function(item) {
-        html += createLinkElement(item);
-      });
+        category.items.forEach(function (item) {
+            html += createLinkElement(item);
+        });
 
-      html += "</ul>";
+        html += "</ul>";
 
-      return html;
+        return html;
     }
 
     // 填充 Python 容器
@@ -447,4 +449,4 @@ function copyToClipboard(elementId) {
 
     // 填充 Data 容器
     dataContainer.innerHTML = createCategoryHTML(data.categories[3]);
-  }
+}
