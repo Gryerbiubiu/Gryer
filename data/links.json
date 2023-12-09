@@ -5,7 +5,8 @@
       "items": [
         {"name": "Python帮助文档", "link": "https://www.cnpython.com"},
         {"name": "pyecharts", "link": "https://pyecharts.org/#/zh-cn/datasets"},
-        {"name": "代码自动生成", "link": "https://curlconverter.com"},
+        {"name": "Curlconverter", "link": "https://curlconverter.com"},
+        {"name": "Tool", "link": "https://tool.lu/curl/"},
         {"name": "Anaconda镜像", "link": "https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/"}
       ]
     },
@@ -26,8 +27,9 @@
         {"name": "IDEA激活码", "link": "https://www.ajihuo.com/"},
         {"name": "虚拟号码", "link": "https://sms-activate.org/cn/"},
         {"name": "鲸鱼", "link": "https://www.heywhale.com/home/"},
-        {"name": "CSDN社区", "link": "https://blog.csdn.net/"},
-        {"name": "各种素材","link": "https://sc.chinaz.com/"}
+        {"name": "各种素材","link": "https://sc.chinaz.com/"},
+        {"name": "Tool", "link": "https://tool.lu/"},
+        {"name": "...", "link": "无"}
       ]
     },
     {
@@ -36,7 +38,8 @@
         {"name": "Yahoo Finance", "link": "https://finance.yahoo.com/"},
         {"name": "Kaggle", "link": "https://www.kaggle.com/datasets"},
         {"name": "DataCastle", "link": "https://www.dcjingsai.com/"},
-        {"name": "天池", "link": "https://tianchi.aliyun.com/"}
+        {"name": "天池", "link": "https://tianchi.aliyun.com/"},
+        {"name": "CSDN社区", "link": "https://blog.csdn.net/"}
       ]
     }
   ]
