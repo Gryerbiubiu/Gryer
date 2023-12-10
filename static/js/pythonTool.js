@@ -144,7 +144,7 @@ function updateCode(language) {
                 '                     }\'\'\'\n' +
                 '                ),\n' +
                 '            ),\n' +
-                '            series_name="这是什么啊",\n' +
+                '            series_name=" ",\n' +
                 '        )\n' +
                 '        .set_global_opts(\n' +
                 '            title_opts=opts.TitleOpts(\n' +
@@ -213,7 +213,7 @@ function updateCode(language) {
                 '                     }\'\'\'\n' +
                 '                ),\n' +
                 '            ),\n' +
-                '            series_name="这是什么啊",  # 系列名称\n' +
+                '            series_name=" ",  # 系列名称\n' +
                 '        )\n' +
                 '        .set_global_opts(\n' +
                 '            title_opts=opts.TitleOpts(\n' +
