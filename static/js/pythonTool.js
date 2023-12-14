@@ -90,7 +90,9 @@ function updateCode(language) {
                 "plt.rcParams['axes.unicode_minus'] = False";
             break;
         case 'plt2':
-            codeBlock.textContent = "待更新";
+            codeBlock.textContent = "rc = {'font.sans-serif': 'SimHei',\n" +
+                "      'axes.unicode_minus': False}\n" +
+                "sns.set(style=\"whitegrid\",rc=rc)";
             break;
         case 'plt3':
             codeBlock.textContent = "待更新";
