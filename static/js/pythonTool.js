@@ -95,6 +95,169 @@ function updateCode(language) {
                 "sns.set(style=\"whitegrid\",rc=rc)";
             break;
         case 'plt3':
+            codeBlock.textContent = "def draw_bar_chart(categories, values, title=\"Bar Chart\", xlabel=\"Categories\", ylabel=\"Values\", random_colors=True, bar_width=0.8):\n" +
+                "    \"\"\"\n" +
+                "    绘制带有边缘线、设置柱子宽度并固定随机颜色范围的柱状图\n" +
+                "    # 示例数据\n" +
+                "    categories_example = ['Category A', 'Category B', 'Category C', 'Category D']\n" +
+                "    values_example = [20, 35, 25, 40]\n" +
+                "    draw_bar_chart(categories_example, values_example, title=\"Example Bar Chart (Fixed Random Colors Range)\", random_colors=True, bar_width=0.5,)\n" +
+                "\n" +
+                "    Parameters:\n" +
+                "    - categories: list，每个柱形的类别\n" +
+                "    - values: list，每个柱形的高度\n" +
+                "    - title: str，图表标题，默认为\"Bar Chart\"\n" +
+                "    - xlabel: str，X轴标签，默认为\"Categories\"\n" +
+                "    - ylabel: str，Y轴标签，默认为\"Values\"\n" +
+                "    - random_colors: bool，是否使用随机颜色，默认为True\n" +
+                "    - edgecolor: str，柱子的边缘线颜色，默认为黑色\n" +
+                "    - bar_width: float，柱子的宽度，默认为0.8\n" +
+                "    - color_seed: int，随机颜色生成器的种子，如果为None则不固定颜色范围\n" +
+                "    \"\"\"\n" +
+                "    # 生成颜色\n" +
+                "    if random_colors:\n" +
+                "        colors = np.random.rand(len(categories), 3)\n" +
+                "    else:\n" +
+                "        # 使用固定颜色，这里使用了skyblue\n" +
+                "        colors = ['skyblue'] * len(categories)\n" +
+                "    # 柱状图，添加edgecolor和width参数\n" +
+                "    plt.bar(categories, values, color=colors, edgecolor='black', width=bar_width)\n" +
+                "    # 图表标题和轴标签\n" +
+                "    plt.title(title)\n" +
+                "    plt.xlabel(xlabel)\n" +
+                "    plt.ylabel(ylabel)\n" +
+                "    # 显示图表\n" +
+                "    plt.show()";
+            break;
+        case 'plt4':
+            codeBlock.textContent = "def grouped_bar_chart(groups, categories, values, x_label=\"x_test\", y_label=\"y_test\", bar_width=0.1, colors=None,\n" +
+                "                      figsize=(8, 6)):\n" +
+                "    \"\"\"\n" +
+                "    绘制群组柱状图\n" +
+                "\n" +
+                "    # 示例用法\n" +
+                "    groups = ['Group A', 'Group B']\n" +
+                "    categories = ['Category 1', 'Category 2', 'Category 3', 'Category 4']\n" +
+                "    values = [\n" +
+                "        [4, 7, 2, 2],\n" +
+                "        [2, 5, 9, 2],\n" +
+                "    ]\n" +
+                "    grouped_bar_chart(groups, categories, values)\n" +
+                "\n" +
+                "    参数：\n" +
+                "    - groups: 群组标签列表\n" +
+                "    - categories: 类别标签列表\n" +
+                "    - values: 二维列表，包含每个群组和类别的值\n" +
+                "    - bar_width: 柱状图宽度，默认为0.35\n" +
+                "    - colors: 每个群组的颜色列表，默认为None，自动选择颜色\n" +
+                "\n" +
+                "    返回值：\n" +
+                "    无\n" +
+                "    \"\"\"\n" +
+                "    num_groups = len(groups)\n" +
+                "    num_categories = len(categories)\n" +
+                "    # 设置图形大小\n" +
+                "    plt.figure(figsize=figsize)\n" +
+                "    # 计算每个群组的位置\n" +
+                "    group_positions = np.arange(num_groups)\n" +
+                "\n" +
+                "    # 绘制柱状图\n" +
+                "    for i in range(num_categories):\n" +
+                "        values_for_category = [values[j][i] for j in range(num_groups)]\n" +
+                "        bar_positions = group_positions + i * bar_width\n" +
+                "\n" +
+                "        if colors is None:\n" +
+                "            plt.bar(bar_positions, values_for_category, bar_width, edgecolor='black', label=categories[i])\n" +
+                "        else:\n" +
+                "            plt.bar(bar_positions, values_for_category, bar_width, edgecolor='black', label=categories[i],\n" +
+                "                    color=colors[i])\n" +
+                "\n" +
+                "    # 添加标签和图例\n" +
+                "    plt.xlabel(x_label)\n" +
+                "    plt.ylabel(y_label)\n" +
+                "    plt.xticks(group_positions + (num_categories - 1) * bar_width / 2, groups)\n" +
+                "    plt.legend()\n" +
+                "\n" +
+                "    # 显示图形\n" +
+                "    plt.show()";
+            break;
+        case 'plt5':
+            codeBlock.textContent = "def draw_pie_chart(labels, sizes, show_legend=True, title=\"Pie Chart\"):\n" +
+                "    \"\"\"\n" +
+                "    绘制饼状图\n" +
+                "    # 示例数据\n" +
+                "    labels_example = ['A', 'B', 'C', 'D','E']\n" +
+                "    sizes_example = [15, 30, 45, 10, 20]\n" +
+                "    draw_pie_chart(labels_example, sizes_example, show_legend=True, title=\"Beautiful Pie Chart\")\n" +
+                "\n" +
+                "    Parameters:\n" +
+                "    - labels: list，每个扇形的标签\n" +
+                "    - sizes: list，每个扇形的大小\n" +
+                "    - show_legend: bool，是否显示图例，默认为True\n" +
+                "    - title: str，图表标题，默认为\"Pie Chart\"\n" +
+                "    \"\"\"\n" +
+                "    # 自定义颜色\n" +
+                "    colors = plt.cm.Paired.colors\n" +
+                "    # 饼状图，width为扇形的宽度\n" +
+                "    _, _, autotexts = plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, colors=colors,\n" +
+                "                              wedgeprops=dict(width=0.6, edgecolor='w'))\n" +
+                "    # 是否显示图例\n" +
+                "    if show_legend:\n" +
+                "        plt.legend(labels, title=\"Legend\", loc=\"center left\", bbox_to_anchor=(1, 0.5))\n" +
+                "    # 标记百分比\n" +
+                "    for autotext in autotexts:\n" +
+                "        autotext.set_color('white')\n" +
+                "    # 图表标题\n" +
+                "    plt.title(title)\n" +
+                "    # 显示图表\n" +
+                "    plt.show()";
+            break;
+        case 'plt6':
+            codeBlock.textContent = "def generate_wordcloud(text):\n" +
+                "    \"\"\"\n" +
+                "    from wordcloud import WordCloud\n" +
+                "    import matplotlib.pyplot as plt\n" +
+                "    import jieba\n" +
+                "    import string\n" +
+                "    import pandas as pd\n" +
+                "    :param text:\n" +
+                "    :return:\n" +
+                "    \"\"\"\n" +
+                "    # 中文分词\n" +
+                "    seg_list = jieba.cut(text, cut_all=False)\n" +
+                "    seg_list = [word for word in seg_list if word not in string.punctuation]  # 去除标点符号\n" +
+                "    seg_list = [word for word in seg_list if word.isalnum()]  # 去除非字母数字字符\n" +
+                "    seg_list = [word for word in seg_list if len(word) > 1]  # 去除长度为1的词\n" +
+                "\n" +
+                "    # 加载停用词表\n" +
+                "    stop_words = set()\n" +
+                "    with open(\"cn_stopwords.txt\", \"r\", encoding=\"utf-8\") as stop_words_file:\n" +
+                "        for line in stop_words_file:\n" +
+                "            stop_words.add(line.strip())\n" +
+                "\n" +
+                "    # 去除停用词\n" +
+                "    seg_list = [word for word in seg_list if word not in stop_words]\n" +
+                "\n" +
+                "    # 生成词频统计\n" +
+                "    # word_freq = pd.Series(seg_list).value_counts()\n" +
+                "\n" +
+                "    # 保存词频统计到Excel文件\n" +
+                "    # word_freq.to_excel(f\"总体词频统计.xlsx\")\n" +
+                "\n" +
+                "    # 合并词列表为字符串\n" +
+                "    text = \" \".join(seg_list)\n" +
+                "\n" +
+                "    # 生成词云图\n" +
+                "    wordcloud = WordCloud(width=800, height=400, background_color='white',\n" +
+                "                          font_path='C:\\Windows\\Fonts\\simhei.ttf').generate(text)\n" +
+                "\n" +
+                "    plt.figure(figsize=(10, 5))\n" +
+                "    plt.imshow(wordcloud, interpolation='bilinear')\n" +
+                "    plt.axis('off')\n" +
+                "    plt.savefig(f\"总体词云统计图.png\")\n" +
+                "    plt.show()";
+            break;
+        case 'plt7':
             codeBlock.textContent = "待更新";
             break;
         case 'Echarts1':
