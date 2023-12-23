@@ -23,7 +23,26 @@ function updateCode(language) {
                 '        writer.writerow(data);';
             break;
         case 'function2':
-            codeBlock.textContent = "待更新";
+            codeBlock.textContent = "def extract_json_from_html(html_content):\n" +
+                "    \"\"\"\n" +
+                "    from bs4 import BeautifulSoup\n" +
+                "    import re\n" +
+                "    import json\n" +
+                "    :param html_content: \n" +
+                "    :return: \n" +
+                "    \"\"\"\n" +
+                "    # 使用BeautifulSoup解析HTML\n" +
+                "    soup = BeautifulSoup(html_content, 'html.parser')\n" +
+                "    # 找到包含JSON数据的script元素，修改“pageData”即可\n" +
+                "    script_elements = soup.find_all('script', string=re.compile('window\\.\\$\\$pageData'))\n" +
+                "    for script_element in script_elements:\n" +
+                "        # 提取JSON数据\n" +
+                "        json_data_match = re.search(r'window\\.\\$\\$pageData\\s*=\\s*({.*?});', script_element.text)\n" +
+                "        if json_data_match:\n" +
+                "            json_content_str = json_data_match.group(1)\n" +
+                "            json_content = json.loads(json_content_str)\n" +
+                "            return json_content\n" +
+                "    return None";
             break;
         case 'function3':
             codeBlock.textContent = "待更新";
