@@ -133,6 +133,10 @@
         {
           "name": "CSDN社区",
           "link": "https://blog.csdn.net/"
+        },
+                {
+          "name": "音乐专辑数据",
+          "link": "http://y.saoju.net/"
         }
       ]
     }
