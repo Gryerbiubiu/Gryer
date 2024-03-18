@@ -23,21 +23,25 @@
           "name": "pyecharts API",
           "link": "https://pyecharts.org/#/zh-cn/datasets"
         },
-                {
+        {
           "name": "seaborn API",
           "link": "https://seaborn.pydata.org/"
         },
-                {
+        {
           "name": "flask API",
           "link": "https://flask.palletsprojects.com/en/3.0.x/"
         },
-                {
+        {
           "name": "jupyter API",
           "link": "https://docs.jupyter.org/en/latest/"
         },
-                {
+        {
           "name": "scikit-learn API",
           "link": "https://scikit-learn.org/stable/index.html"
+        },
+        {
+          "name": "Scrapy API",
+          "link": "https://scrapy-chs.readthedocs.io/zh-cn/1.0/intro/overview.html"
         }
       ]
     },
@@ -134,7 +138,7 @@
           "name": "CSDN社区",
           "link": "https://blog.csdn.net/"
         },
-                {
+        {
           "name": "音乐专辑数据",
           "link": "http://y.saoju.net/"
         }
